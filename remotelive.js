@@ -21,15 +21,29 @@ if (Meteor.isClient) {
   })
 
   Meteor.startup(function () {
-    $(".create-overlay").hide();
 
     $("#question").on('click', function() {
-      $(".create-overlay").fadeIn();
+      if (!Meteor.user()) {
+        $(".signin-overlay").fadeIn(100);
+      }
+      else {
+        $(".create-overlay").fadeIn(100);
+      }
     })
 
-    $(".create-overlay").on('click', function() {
-      $(this).hide();
+    $(".overlay").on('click', function(e) {
+      e.stopPropagation();
     })
+
+    $(".create-overlay").on('click', function(e) {
+      $(this).hide()
+    })
+
+    $(".signin-overlay").on('click', function(e) {
+      $(this).hide()
+    })
+
+    
   });
 
 

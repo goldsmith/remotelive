@@ -69,7 +69,8 @@ div.projects-header {
 	float: right;
 }
 
-.create-overlay {
+.create-overlay, .signin-overlay {
+	display: none;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -80,7 +81,7 @@ div.projects-header {
     background-color: rgba(0,0,0,0.5);
 }
 
-.create-overlay div {
+.overlay {
     width: 800px;
     height: 400px;
     margin: 100px auto;
@@ -89,6 +90,24 @@ div.projects-header {
     padding:15px;
     text-align:center;
     border-radius: 5px;
+    z-index: 3;
+}
+
+.signin {
+	width: 600px;
+	height: 100px;
+}
+
+.signin span{
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 24px;
+	float: none;
+}
+
+.signin #login-buttons {
+	float: none;
+	margin: 25px;
 }
 
 textarea {
