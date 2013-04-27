@@ -1,0 +1,51 @@
+<head>
+  <title>remotelive</title>
+</head>
+
+<body>
+    {{> create-question}}
+    <div class="container">
+        <div class="header">
+            {{> header}}
+        </div>
+        <div class="projects">
+        {{> projects}}           
+        </div>
+    </div>
+</body>
+
+<template name="header">
+    {{loginButtons align="right"}}
+    <span class="logo">RemoteLive</span> 
+    <span class="description"> ask and answer programming questions in real time</span> 
+</template>
+
+<template name="projects">
+    <div class="projects-header">
+        <a class="btn pull-right add-question" id="question">Add question</a>
+        <span class="projects-header">Questions</span>
+    </div>
+    {{#each projects}}
+        {{> project}}
+    {{/each}}
+</template>
+
+<template name="project">
+    <div class="project">
+        <span class="title">{{title}}</span>
+        <div class="language"><span>{{language}}</span></div>
+        <span class="creator">{{creator}}</span>
+        <span class="created">{{created_at}}</span>
+    </div>
+</template>
+
+<template name="create-question">
+    <div class="create-overlay">
+        <div class="overlay">
+            <textarea placeholder="What is your question?"></textarea>
+            <span class="overlay-language">Programming language?</span>
+            <input id="programming-language" type="text" />
+            <a id="submit-question" class="btn add-question">Submit question</a>
+        </div>
+    </div>
+</template>
