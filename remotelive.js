@@ -2,15 +2,6 @@ Projects = new Meteor.Collection("projects");
 
 if (Meteor.isClient) {
 
-  $(".create-overlay").on('click', function() {
-    this.css('visibility', 'hidden');
-    console.log('clicked')
-  })
-
-  $("#submit-question").on('click', function() {
-    console.log('what?');
-  })
-
   Template.header.user = function() {
     return false;
   };
@@ -22,18 +13,23 @@ if (Meteor.isClient) {
   Template.projects.events({
 
     "click #add-question" : function (e) {
-      if (!Meteor.user()) {
-        alert('not logged in!')
-      }
+      
+      $(".create-overlay").css("visibility", "display");
+      console.log('yeah');
 
-      else {
-        
-      }
     }
   })
 
   Meteor.startup(function () {
+    $(".create-overlay").hide();
 
+    $("#question").on('click', function() {
+      $(".create-overlay").fadeIn();
+    })
+
+    $(".create-overlay").on('click', function() {
+      $(this).hide();
+    })
   });
 
 
