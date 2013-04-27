@@ -7,16 +7,26 @@ if (Meteor.isClient) {
   };
 
   Template.projects.projects = function() {
-    return Projects.find({}, {sort: {date_created: -1}});
+    return Projects.find({}, {sort: {created_at: -1}});
   }
 
-  Template.projects.events({
+  Meteor.setInterval(function() {
+    Projects.find({}, {sort: {created_at: -1}}).forEach(function (project) {
+      Projects.update(project._id, {$set: {'relative_date': moment(project.created_at).fromNow()}})
+    })
+  }, 1000)
 
-    "click #add-question" : function (e) {
-      
-      $(".create-overlay").css("visibility", "display");
-      console.log('yeah');
+  Template.createQuestion.events({
 
+    "click #submit-question" : function (e) {
+      Projects.insert({
+        title: $("textarea").val(),
+        language: $("#programming-language").val(),
+        creator: "imkevinxu",
+        created_at: Date.parse(new Date()),
+        relative_date: "a few seconds ago",
+        room: Math.floor(1000000*Math.random())
+      })
     }
   })
 
@@ -52,12 +62,12 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+
   });
 
   Meteor.methods({
     clear: function () {
-      Projects.remove({})
+      Projects.remove({});
     }
   })
 

@@ -65,8 +65,22 @@ div.projects-header {
 	font-weight: bold;
 }
 
+.language {
+	display: inline-block;
+	float: right;
+	margin-top: -45px;
+	background-color: crimson;
+	padding: 5px;
+	color: white;
+}
+
+.creator {
+	display: block;
+}
+
 .created {
 	float: right;
+	margin-top: -8px;
 }
 
 .create-overlay, .signin-overlay {
@@ -137,4 +151,8 @@ textarea {
 	font-size: 20px;
 	line-height: 1em;
 	padding: 20px;
+}
+
+#submit-question:hover {
+	color: white;
 }

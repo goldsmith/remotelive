@@ -3,7 +3,7 @@
 </head>
 
 <body>
-    {{> create-question}}
+    {{> createQuestion}}
     <div class="container">
         <div class="header">
             {{> header}}
@@ -33,13 +33,13 @@
 <template name="project">
     <div class="project">
         <span class="title">{{title}}</span>
-        <div class="language"><span>{{language}}</span></div>
         <span class="creator">{{creator}}</span>
-        <span class="created">{{created_at}}</span>
+        <div class="language"><span>{{language}}</span></div>
+        <span class="created">{{relative_date}}</span>
     </div>
 </template>
 
-<template name="create-question">
+<template name="createQuestion">
     <div class="create-overlay">
         <div class="overlay">
             <textarea placeholder="What is your question?"></textarea>
